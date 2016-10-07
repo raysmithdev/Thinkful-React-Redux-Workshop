@@ -10,5 +10,10 @@ This project is to help people understand how to build and structure a web app u
 - [Babel] (https://babeljs.io/)
 - [Webpack] (https://webpack.github.io/)
 
+## Resources
+
+- [React-howto] (https://github.com/petehunt/react-howto): A where to start guide recommended by [Dan Abramov](https://github.com/gaearon) (Creator of Redux).
+
+
 ## Disclaimer
 This repo is not intended to say this is the best way to make a React / Redux App, it is intended to help people get an idea of how I would write React / Redux code when creating a Web App. Feel free to contribute to this by creating a pull request :)
