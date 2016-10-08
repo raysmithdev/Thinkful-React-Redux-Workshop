@@ -2,20 +2,51 @@
   ES6
 */
 
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import Intro from './components/Intro';
-import './App.css';
+import React, { Component } from 'react'
+import Intro from './components/Intro'
+import Loader from './components/Loader'
+import './App.css'
+import 'whatwg-fetch'
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      isFetchingData: true,
+      users: []
+    }
+  }
+
+  componentDidMount() {
+    const url = 'http://api.randomuser.me/?results=100'
+
+    fetch(url)
+    .then((response) => {
+      return response.json()
+    }).then((data) => {
+      console.log(data.results)
+      this.setState({
+        isFetchingData: false,
+        users: data.results
+      })
+    }).catch((ex) => {
+      console.log('parsing failed', ex)
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to the Thinkful React Workshop</h2>
-        </div>
-        <Intro />
+        <Intro
+          name="Ray Smith"
+          text="Day2 where still alive!"
+        />
+        {this.state.isFetchingData ? <Loader /> : ' '}
+        <ul>
+          {this.state.users.map((user, index) => {
+            return <li key={index}>{user.email}</li>
+          })}
+        </ul>
       </div>
     );
   }
@@ -28,21 +59,52 @@ export default App;
 */
 
 // var React = require ('react');
-// var logo = require ('./logo.svg');
-// var Intro = require('./Intro');
+// var Intro = require('./components/Intro');
+// var Loader = require('./components/Loader');
 // require('./App.css');
+// require(''whatwg-fetch'');
 //
 // var App = React.createClass({
+//
+//        getInitialState: function() {
+//          return {
+//            isFetchingData: true,
+//            users: []
+//          }
+//        },
+//
+//        componentDidMount: function() {
+//          const url = 'http://api.randomuser.me/?results=100'
+//
+//          fetch(url)
+//            .then(function(response) {
+//              return response.json()
+//            }).then(function(data) {
+//              console.log(data.results)
+//              this.setState({
+//                isFetchingData: false,
+//                users: data.results
+//              })
+//            }).catch(function(ex) {
+//              console.log('parsing failed', ex)
+//            })
+//        },
+//
 //     render: function() {
 //       return (
-//         <div className="App">
-//           <div className="App-header">
-//             <img src={logo} className="App-logo" alt="logo" />
-//             <h2>Welcome to React</h2>
+//          <div className="App">
+//            <Intro
+//              name="Ray Smith"
+//                text="Day2 where still alive!"
+//                />
+//              {this.state.isFetchingData ? <Loader /> : ' '}
+//              <ul>
+//                {this.state.users.map((user, index) => {
+//                  return <li key={index}>{user.email}</li>
+//                })}
+//              </ul>
 //           </div>
-//            <Intro />
-//         </div>
-//       );
+//          );
 //     }
 // });
 //
