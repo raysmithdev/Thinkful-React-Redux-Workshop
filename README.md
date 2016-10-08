@@ -12,6 +12,7 @@ This project is to help people understand how to build and structure a web app u
 
 ## Resources
 
+- [React for everyone] (https://www.youtube.com/playlist?list=PLLnpHn493BHFfs3Uj5tvx17mXk4B4ws4p): A YouTube video series by LevelUpTuts.
 - [React-howto] (https://github.com/petehunt/react-howto): A where to start guide recommended by [Dan Abramov](https://github.com/gaearon) (Creator of Redux).
 
 
