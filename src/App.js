@@ -3,8 +3,9 @@
 */
 
 import React, { Component } from 'react'
-import Intro from './components/Intro'
 import Loader from './components/Loader'
+import UserWidget from './components/UserWidget'
+import NavBar from './components/NavBar'
 import './App.css'
 import 'whatwg-fetch'
 
@@ -18,7 +19,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const url = 'http://api.randomuser.me/?results=100'
+    const url = 'http://api.randomuser.me/?results=400'
 
     fetch(url)
     .then((response) => {
@@ -37,16 +38,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Intro
-          name="Ray Smith"
-          text="Day2 where still alive!"
-        />
-        {this.state.isFetchingData ? <Loader /> : ' '}
-        <ul>
-          {this.state.users.map((user, index) => {
-            return <li key={index}>{user.email}</li>
-          })}
-        </ul>
+        {this.state.isFetchingData ? <Loader text="Loading content below. Please wait!"/> : <NavBar /> }
+        {this.state.users.map((user, index) => {
+          return <UserWidget key={index} {...user} />
+        })}
       </div>
     );
   }
@@ -59,8 +54,9 @@ export default App;
 */
 
 // var React = require ('react');
-// var Intro = require('./components/Intro');
 // var Loader = require('./components/Loader');
+// var UserWidget = require('./components/UserWidget');
+// var NavBar = require('./components/NavBar');
 // require('./App.css');
 // require(''whatwg-fetch'');
 //
@@ -93,16 +89,10 @@ export default App;
 //     render: function() {
 //       return (
 //          <div className="App">
-//            <Intro
-//              name="Ray Smith"
-//                text="Day2 where still alive!"
-//                />
-//              {this.state.isFetchingData ? <Loader /> : ' '}
-//              <ul>
-//                {this.state.users.map((user, index) => {
-//                  return <li key={index}>{user.email}</li>
-//                })}
-//              </ul>
+//            {this.state.isFetchingData ? <Loader text="Loading content below. Please wait!"/> : <NavBar />}
+//              {this.state.users.map((user, index) => {
+//                return <UserWidget key={index} {...user} />
+//              })}
 //           </div>
 //          );
 //     }

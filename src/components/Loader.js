@@ -3,12 +3,16 @@
 */
 
 import React from 'react'
+import CircularProgress from 'material-ui/CircularProgress'
 
-const Loader = () => {
-  return (
-    <p>Loading...</p>
-  );
-}
+const Loader = () => (
+    <CircularProgress
+      size={60}
+      thickness={6}
+      min={100}
+      className="Loader"
+    />
+);
 
 export default Loader
 
@@ -16,12 +20,18 @@ export default Loader
   ES5
 */
 
-// var React = require('react');
+// var React = require ('react');
+// var CircularProgress = require ('material-ui/CircularProgress');
 //
 // var Loader = function() {
-//     return (
-//      <p>Loading...</p>
-//     );
-// };
+//   return (
+//     <CircularProgress
+//       size={60}
+//       thickness={6}
+//       min={100}
+//       className="Loader"
+//     />
+//   );
+// }
 //
-// module.exports = Loader
+// export default Loader;
