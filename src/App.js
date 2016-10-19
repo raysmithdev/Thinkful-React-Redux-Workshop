@@ -5,7 +5,8 @@
 import React, { Component } from 'react'
 import Loader from './components/Loader'
 import UserWidget from './components/UserWidget'
-import NavBar from './components/NavBar'
+import NavbarContainer from './containers/NavbarContainer'
+import CounterContainer from './containers/CounterContainer'
 import './App.css'
 import 'whatwg-fetch'
 
@@ -19,13 +20,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const url = 'http://api.randomuser.me/?results=400'
+    const url = 'http://api.randomuser.me/?results=10'
 
     fetch(url)
     .then((response) => {
       return response.json()
     }).then((data) => {
-      console.log(data.results)
       this.setState({
         isFetchingData: false,
         users: data.results
@@ -38,10 +38,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.isFetchingData ? <Loader text="Loading content below. Please wait!"/> : <NavBar /> }
+        <NavbarContainer />
+        <CounterContainer />
+        <div className="App-UserWidget">
         {this.state.users.map((user, index) => {
-          return <UserWidget key={index} {...user} />
+          return <UserWidget key={index}  {...user} />
         })}
+        </div>
       </div>
     );
   }

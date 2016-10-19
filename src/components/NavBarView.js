@@ -5,14 +5,18 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar'
 
-const NavBar = () => (
-  <AppBar
-    title="User Directory"
-    iconClassNameRight="muidocs-icon-navigation-expand-more"
-  />
-);
+const NavBarView = ({ name}) => {
+  return  (
+    <AppBar
+      title={name}
+      iconClassNameRight="muidocs-icon-navigation-expand-more"
+    />
+  );
+}
 
-export default NavBar
+
+
+export default NavBarView
 
 /*
   ES5
