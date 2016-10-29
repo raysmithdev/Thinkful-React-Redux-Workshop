@@ -4,8 +4,10 @@
   left: 50%;
 }
 
-.App-UserWidget {
-  width: 500px;
+.Map {
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .star {

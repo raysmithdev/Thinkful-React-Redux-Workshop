@@ -3,12 +3,27 @@
 */
 
 import React, { Component } from 'react'
-import Loader from './components/Loader'
-import UserWidget from './components/UserWidget'
+import MapView from './components/MapView'
 import NavbarContainer from './containers/NavbarContainer'
-import CounterContainer from './containers/CounterContainer'
+import _ from "lodash"
 import './App.css'
 import 'whatwg-fetch'
+
+
+const markers = [
+  {
+    position: {
+      lat: 40.731900,
+      lng: -73.992811
+    }
+  },
+  {
+    position: {
+      lat: 40.732136,
+      lng: -73.995032
+    }
+  }
+];
 
 class App extends Component {
   constructor() {
@@ -19,31 +34,37 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    const url = 'http://api.randomuser.me/?results=10'
-
-    fetch(url)
-    .then((response) => {
-      return response.json()
-    }).then((data) => {
-      this.setState({
-        isFetchingData: false,
-        users: data.results
-      })
-    }).catch((ex) => {
-      console.log('parsing failed', ex)
-    })
-  }
+  // componentDidMount() {
+  //   // const url = 'https://api.spotify.com//v1/browse/new-releases'
+  //   const url = 'https://accounts.spotify.com/authorize/?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fcallback&scope=user-read-private%20user-read-email&state=34fFs29kd09'
+  //
+  //   fetch(url)
+  //   .then((response) => {
+  //     return response.json()
+  //   }).then((data) => {
+  //     console.log(data)
+  //   }).catch((ex) => {
+  //     console.log('parsing failed', ex)
+  //   })
+  // }
 
   render() {
     return (
       <div className="App">
         <NavbarContainer />
-        <CounterContainer />
-        <div className="App-UserWidget">
-        {this.state.users.map((user, index) => {
-          return <UserWidget key={index}  {...user} />
-        })}
+        <div className="Map">
+        <MapView
+          containerElement={
+            <div style={{ height: `100%` }} />
+          }
+          mapElement={
+            <div style={{ height: `100%` }} />
+          }
+          onMapLoad={_.noop}
+          onMapClick={_.noop}
+          markers={markers}
+          onMarkerRightClick={_.noop}
+        />
         </div>
       </div>
     );

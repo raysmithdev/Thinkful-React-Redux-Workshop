@@ -3,8 +3,7 @@ import NavBarView from '../components/NavBarView'
 
 const mapStateToProps = (state) => {
   return {
-    name: state.user.name,
-    age: state.user.age
+
   }
 }
 
@@ -14,4 +13,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps)(NavBarView)
+export default connect()(NavBarView)

@@ -5,11 +5,12 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar'
 
-const NavBarView = ({ name}) => {
+const NavBarView = () => {
   return  (
     <AppBar
-      title={name}
+      title={"Hello!"}
       iconClassNameRight="muidocs-icon-navigation-expand-more"
+      style={{ background: `#6799FF`}}
     />
   );
 }

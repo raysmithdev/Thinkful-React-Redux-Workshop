@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import logger from 'redux-logger'
 
-import { user, counter } from './reducers'
+import {  } from './reducers'
 
 const middleware = [
   logger()
@@ -17,8 +17,6 @@ const enhancers = compose(
 
 export const store = createStore(
   combineReducers({
-    user,
-    counter,
     routing: routerReducer
   }),
   {},
